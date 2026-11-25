@@ -1,0 +1,29 @@
+[project]
+name = "receipt-ocr"
+version = "0.1.0"
+description = "Receipt OCR: OpenCV preprocessing, several Tesseract strategies, optional EasyOCR, field extraction for Turkish receipts"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
+    "pillow>=10",
+    "opencv-python-headless>=4.10",
+    "numpy>=1.26,<3",
+    "pytesseract>=0.3.13",
+]
+
+[project.optional-dependencies]
+easyocr = ["easyocr>=1.7"]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
